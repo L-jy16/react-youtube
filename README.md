@@ -5,4 +5,7 @@
 ## 완성작 보기
 미리보기 : 
 
-## 사용 스택"# react-youtube" 
+## 사용 스택
+
+## 라이브러리 설치
+sass를 설치 : `npm install sass`
