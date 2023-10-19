@@ -73,3 +73,28 @@
          url("../../fonts/nexonLv1-Bold.woff2") format("woff2");
     font-display: swap;
 }
+
+@font-face {
+    font-family: 'CookieRun';
+    font-weight: 400;
+    font-style: normal;
+    src: url("../../fonts/CookieRunRegular.woff2") format('woff2'),
+         url("../../fonts/CookieRunRegular.woff") format('woff');
+    font-display: swap;
+} 
+@font-face {
+    font-family: 'CookieRun';
+    font-weight: 700;
+    font-style: normal;
+    src: url("../../fonts/CookieRunBold.woff2") format('woff2'),
+         url("../../fonts/CookieRunBold.woff") format('woff');
+    font-display: swap;
+} 
+@font-face {
+    font-family: 'CookieRun';
+    font-weight: 900;
+    font-style: normal;
+    src: url("../../fonts/CookieRunBlack.woff2") format('woff2'),
+         url("../../fonts/CookieRunBlack.woff") format('woff');
+    font-display: swap;
+} 

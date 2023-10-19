@@ -1,0 +1,18 @@
+.search__inner {
+    width: 100%;
+    padding: 15px 40px;
+    border-bottom: 1px dashed var(--primary-color400);
+    box-sizing: border-box;
+
+    label {
+        display: none;
+    }
+    .search__input {
+        width: 100%;
+        background-color: var(--primary-color200);
+        padding: 19px 30px;
+        border-radius: 10px;
+        color: var(--white);
+        font-size: 1.4rem;
+    }       
+}
