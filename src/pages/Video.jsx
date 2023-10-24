@@ -12,7 +12,7 @@ const Video = () => {
 
     const { videoId } = useParams();
     const [ videoDetail, setVideoDetail ] = useState(null);
-    // const [comments, setComments] = useState([]);
+    const [comments, setComments] = useState([]);
 
     useEffect(() => {
         fetchFromAPI(`videos?part=snippet,statistics&id=${videoId}`)
@@ -21,11 +21,11 @@ const Video = () => {
                 console.log(data)
             });
 
-            // fetchFromAPI(`commentThreads?part=snippet&videoId=${videoId}`)
-            //     .then((data) => {
-            //         setComments(data.items.snippet.topLevelComment);
-            //         console.log(data)
-            //     })
+            fetchFromAPI(`commentThreads?part=snippet&videoId=${videoId}`)
+                .then((data) => {
+                    setComments(data.items);
+                    console.log(data)
+                })
     }, [videoId])
 
     return (
@@ -57,12 +57,19 @@ const Video = () => {
                         </div>
                     </div>
                     <div className='video__desc'>
-                        {/* {comments.map((comments, key) => (
-
-                        ))} */}
+                        {videoDetail.snippet.description}
                     </div>
                     <div className='video__comment'>
-
+                        {comments.map((comment, key) => (
+                            <div className="comment__all" key={key}>
+                                <div className="comment__nickname" key={key}>
+                                    {comment.snippet.topLevelComment.snippet.authorDisplayName}
+                                </div>
+                                <div className="comment__cont" key={key}>
+                                    {comment.snippet.topLevelComment.snippet.textOriginal}
+                                </div>
+                            </div>
+                        ))}
                     </div>
                 </div>
             )}
