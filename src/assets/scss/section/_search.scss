@@ -9,13 +9,18 @@
     }
     .search__input {
         width: 100%;
-        background-color: var(--primary-color200);
+        // background-color: var(--primary-color200);
         padding: 19px 30px;
         border-radius: 10px;
         color: var(--white);
         font-size: 1.4rem;
+        border: 2px solid var(--primary-color200);
+        color: var(--primary-color);
+        font-weight: bold;
+        
+        &::placeholder {
+            color: var(--primary-color200);
+        }
     }       
-    .search__input::placeholder {
-        color: var(--white);
-    }
+    
 }

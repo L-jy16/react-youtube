@@ -1,13 +1,18 @@
 import React, { useEffect, useState } from 'react'
-import { useParams } from 'react-router-dom'
+import { Link, useParams } from 'react-router-dom'
 import { fetchFromAPI } from '../utils/api';
 import ReactPlayer from 'react-player';
+
+import { AiFillPlaySquare } from "react-icons/ai";
+import { AiFillLike } from "react-icons/ai";
+import { AiOutlineComment } from "react-icons/ai";
 
 
 const Video = () => {
 
     const { videoId } = useParams();
     const [ videoDetail, setVideoDetail ] = useState(null);
+    // const [comments, setComments] = useState([]);
 
     useEffect(() => {
         fetchFromAPI(`videos?part=snippet,statistics&id=${videoId}`)
@@ -15,6 +20,12 @@ const Video = () => {
                 setVideoDetail(data.items[0]);
                 console.log(data)
             });
+
+            // fetchFromAPI(`commentThreads?part=snippet&videoId=${videoId}`)
+            //     .then((data) => {
+            //         setComments(data.items.snippet.topLevelComment);
+            //         console.log(data)
+            //     })
     }, [videoId])
 
     return (
@@ -35,13 +46,23 @@ const Video = () => {
                             {videoDetail.snippet.title}
                         </h2>
                         <div className='video__channel'>
-                            <div className='id'>{videoDetail.snippet.channelTitle}</div>
+                            <div className='id'>
+                                <Link to={`/channel/${videoDetail.snippet.channelId}`}>{videoDetail.snippet.channelTitle}</Link>
+                            </div>
                             <div className='count'>
-                                <span className='view'>시청 갯수 : {videoDetail.statistics.viewCount}<br/></span>
-                                <span className='like'>좋아요 갯수 : {videoDetail.statistics.likeCount}<br/></span>
-                                <span className='comment'>댓글 갯수 : {videoDetail.statistics.commentCount}<br/></span>
+                                <span className='view'><AiFillPlaySquare />{videoDetail.statistics.viewCount}</span>
+                                <span className='like'><AiFillLike />{videoDetail.statistics.likeCount}</span>
+                                <span className='comment'><AiOutlineComment />{videoDetail.statistics.commentCount}</span>
                             </div>
                         </div>
+                    </div>
+                    <div className='video__desc'>
+                        {/* {comments.map((comments, key) => (
+
+                        ))} */}
+                    </div>
+                    <div className='video__comment'>
+
                     </div>
                 </div>
             )}
