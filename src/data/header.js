@@ -31,9 +31,9 @@ export const keywordText = [
         src: "/search/아카캉",
     },
     {
-        title: "무비드라이",
+        title: "무비드라이브",
         icon: <AiOutlineRightCircle />,
-        src: "/search/무비드라이",
+        src: "/search/무비드라이브",
     },
     {
         title: "빠퀴",
@@ -56,9 +56,9 @@ export const keywordText = [
         src: "/search/리뷰하는 여자_아리꼬",
     },
     {
-        title: "SeoHa",
+        title: "모두의 명작",
         icon: <AiOutlineRightCircle />,
-        src: "/search/SeoHa",
+        src: "/search/모두의 명작",
     },
     {
         title: "애니집합소",
