@@ -21,11 +21,11 @@ const Video = () => {
                 console.log(data)
             });
 
-            fetchFromAPI(`commentThreads?part=snippet&videoId=${videoId}`)
-                .then((data) => {
-                    setComments(data.items);
-                    console.log(data)
-                })
+        fetchFromAPI(`commentThreads?part=snippet&videoId=${videoId}`)
+            .then((data) => {
+                setComments(data.items);
+                console.log(data)
+            })
     }, [videoId])
 
     return (

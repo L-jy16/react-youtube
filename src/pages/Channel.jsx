@@ -5,16 +5,23 @@ import { fetchFromAPI } from '../utils/api';
 import { AiOutlineAliwangwang } from "react-icons/ai";
 import { AiFillVideoCamera } from "react-icons/ai";
 import { AiOutlineEye } from "react-icons/ai";
+import VideoSearch from '../components/video/VideoSearch';
 
 const Channel = () => {
     const { channelId } = useParams();
     const [ channelDetail, setChannelDetail ] = useState();
+    const [ channelVideo, setchannelVideo ] = useState([]);
 
     useEffect(() => {
         const fetchResults = async () => {
             try {
                 const data = await fetchFromAPI(`channels?part=snippet&id=${channelId}`);
                 setChannelDetail(data.items[0]);
+
+                const videoData = await fetchFromAPI(`search?channelId=${channelId}&part=snippet&order=date`);
+                console.log(videoData.items)
+                setchannelVideo(videoData.items);
+
             } catch(error) {
                 console.log("Error Fetching data", error)
             }
@@ -22,6 +29,7 @@ const Channel = () => {
 
         fetchResults();
     }, [channelId]);
+    
 
   return (
     <section id='channel'>
@@ -41,8 +49,8 @@ const Channel = () => {
                         <span><AiOutlineEye />{channelDetail.statistics.viewCount}</span>
                     </div>
                 </div>
-                <div className="channel__video cideo__inner">
-                    
+                <div className="channel__video video__inner">
+                    <VideoSearch videos={channelVideo}/>
                 </div>
                 <div className="channel__more"></div>
             </div>
